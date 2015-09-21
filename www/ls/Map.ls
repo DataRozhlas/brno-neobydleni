@@ -8,10 +8,10 @@ titles =
   sKamny         : "S kamny"
   najemni        : "Nájemní"
 class ig.Map
-  (@container, @geojson) ->
+  (@container, @geojson, displayedProperty, colorScale) ->
     @init!
     @addTiles!
-    @generateGeojsons <[ratio qualityAverage]>
+    @generateGeojsonLayer displayedProperty, colorScale .addTo @map
 
   generateGeojsons: (properties) ->
     layersAssoc = {}
@@ -22,12 +22,12 @@ class ig.Map
     @layerControl = L.control.layers layersAssoc, {}
     @layerControl.addTo @map
 
-  generateGeojsonLayer: (property) ->
+  generateGeojsonLayer: (property, colorScale) ->
     features = @geojson.features.filter -> !isNaN it.properties[property]
     filteredGeojson = {features}
     color = d3.scale.quantile!
       ..domain filteredGeojson.features.map (.properties[property])
-      ..range ['rgb(247,244,249)','rgb(231,225,239)','rgb(212,185,218)','rgb(201,148,199)','rgb(223,101,176)','rgb(231,41,138)','rgb(206,18,86)','rgb(152,0,67)','rgb(103,0,31)']
+      ..range colorScale
     @geojsonLayer := L.geoJson do
       * filteredGeojson
       * style: (feature) ->

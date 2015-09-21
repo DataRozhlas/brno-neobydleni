@@ -29,4 +29,23 @@ for feature in geojson.features
   feature.properties.qualityAverage = 0
   for property in <[bezKoupelny bezZachodu bezVodovodu]>
     feature.properties.qualityAverage += feature.properties[property]
-new ig.Map container, geojson
+container1 = container.append \div
+  ..attr \class "half left"
+  ..append \h2
+    ..html "Neobydlené byty"
+container2 = container.append \div
+  ..attr \class "half right"
+  ..append \h2
+    ..html "Nekvalitní byty"
+map1 = new ig.Map do
+  container1
+  geojson
+  "ratio"
+  ['rgb(247,244,249)','rgb(231,225,239)','rgb(212,185,218)','rgb(201,148,199)','rgb(223,101,176)','rgb(231,41,138)','rgb(206,18,86)','rgb(152,0,67)','rgb(103,0,31)']
+map2 = new ig.Map do
+  container2
+  geojson
+  "qualityAverage"
+  ['rgb(255,245,240)','rgb(254,224,210)','rgb(252,187,161)','rgb(252,146,114)','rgb(251,106,74)','rgb(239,59,44)','rgb(203,24,29)','rgb(165,15,21)','rgb(103,0,13)']
+
+ig.syncMaps map1.map, map2.map

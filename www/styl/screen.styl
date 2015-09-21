@@ -5,9 +5,46 @@
 .ig
   @import basics
 .ig
-  .map
+  font-family Roboto, sans-serif
+  .half
+    position absolute
+    top 0px
+    bottom 0px
+    width 50%
+    &.left
+      left 0px
+      border-right 1px solid rgb(103,0,31)
+      .leaflet-control-attribution
+        display none
+    &.right
+      left 50%
+      border-left 1px solid rgb(103,0,13)
+      .leaflet-control-zoom
+        display none
+    h2
       position absolute
       top 0px
+      width 100%
+      font-size 15px
+      color white
+      margin 0px
+      line-height 30px
+      font-weight 500
+      padding-left 10px
+    &.left h2
+      background rgb(152,0,67)
+    &.right h2
+      background rgb(165,15,21)
+    .map
+      position absolute
+      top 30px
       left 0px
       bottom 0px
       width 100%
+      .slaveMarker
+        width 16px
+        height 16px
+        border-radius 50%
+        border 3px solid black
+        background white
+        opacity 0.5
