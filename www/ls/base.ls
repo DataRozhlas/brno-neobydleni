@@ -62,7 +62,7 @@ getAveragePositionString = (feature, property) ->
   else if feature.properties[property] < averages[property] * 0.9
     "podprůměrn"
   else
-    "průmern"
+    "průměrn"
 
 onFeature = (feature) ->
 
