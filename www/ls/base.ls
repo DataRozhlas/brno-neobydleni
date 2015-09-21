@@ -58,20 +58,20 @@ infobars.0.element.html "Po najetí myší nad část města se zde zobrazí pod
 
 getAveragePositionString = (feature, property) ->
   if feature.properties[property] > averages[property] * 1.1
-    "nadprůměrné"
+    "nadprůměrn"
   else if feature.properties[property] < averages[property] * 0.9
-    "podprůměrné"
+    "podprůměrn"
   else
-    "průmerné"
+    "průmern"
 
 onFeature = (feature) ->
 
   infobars.0.element.html "<b>#{feature.properties.NAZ_ZSJ}: </b>
-    <em>#{getAveragePositionString feature, 'ratio'}</em> množství prázdných bytů (#{ig.utils.formatNumber feature.properties.ratio * 100} %)"
+    <em>#{getAveragePositionString feature, 'ratio'}é</em> množství prázdných bytů (#{ig.utils.formatNumber feature.properties.ratio * 100} %)"
   infobars.1.element.html "
-    <em>#{getAveragePositionString feature, 'bezKoupelny'}</em> bytů bez koupelny (#{ig.utils.formatNumber feature.properties.bezKoupelny * 100}&nbsp;%)
-    , <em>#{getAveragePositionString feature, 'bezZachodu'}</em> bez toalet (#{ig.utils.formatNumber feature.properties.bezZachodu * 100}&nbsp;%)
-    , <em>#{getAveragePositionString feature, 'bezVodovodu'}</em> bez koupelny (#{ig.utils.formatNumber feature.properties.bezVodovodu * 100}&nbsp;%)"
+    <em>#{getAveragePositionString feature, 'bezKoupelny'}ě</em> bytů bez koupelny (#{ig.utils.formatNumber feature.properties.bezKoupelny * 100}&nbsp;%)
+    , <em>#{getAveragePositionString feature, 'bezZachodu'}ě</em> bez toalet (#{ig.utils.formatNumber feature.properties.bezZachodu * 100}&nbsp;%)
+    ,<br><em>#{getAveragePositionString feature, 'bezVodovodu'}ě</em> bez vodovodu (#{ig.utils.formatNumber feature.properties.bezVodovodu * 100}&nbsp;%)"
   # console.log feature
 
 map1 = new ig.Map do
