@@ -11,7 +11,7 @@ class ig.Map
   (@container, @geojson) ->
     @init!
     @addTiles!
-    @generateGeojsons <[ratio bezKoupelny bezTepleVody snizenaKvalita bezZachodu bezVodovodu sKamny najemni]>
+    @generateGeojsons <[ratio qualityAverage]>
 
   generateGeojsons: (properties) ->
     layersAssoc = {}

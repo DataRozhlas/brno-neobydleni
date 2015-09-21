@@ -26,4 +26,7 @@ for feature in geojson.features
   feature.properties.bezVodovodu = 1 -(parseInt kvalita['Obydlené byty v bytových domech    - vodovod v bytě']) / total
   feature.properties.sKamny = (parseInt kvalita['Obydlené byty v bytových domech - způsob vytápění: kamna']) / total
   feature.properties.najemni = (parseInt kvalita['Obydlené byty v bytových domech - právní důvod užívání bytu: nájemní']) / total
+  feature.properties.qualityAverage = 0
+  for property in <[bezKoupelny bezZachodu bezVodovodu]>
+    feature.properties.qualityAverage += feature.properties[property]
 new ig.Map container, geojson
