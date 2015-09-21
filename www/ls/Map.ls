@@ -51,7 +51,7 @@ class ig.Map
       * minZoom: 10,
         maxZoom: 16,
         zoom: 13,
-        center: [49.189 16.61]
+        center: [49.205 16.61]
         maxBounds: [[49.124,16.475], [49.289,16.716]]
 
   addTiles: ->
