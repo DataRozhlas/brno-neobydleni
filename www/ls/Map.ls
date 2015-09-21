@@ -8,7 +8,7 @@ titles =
   sKamny         : "S kamny"
   najemni        : "Nájemní"
 class ig.Map
-  (@container, @geojson, displayedProperty, colorScale) ->
+  (@container, @geojson, displayedProperty, colorScale, @onMouseover) ->
     @init!
     @addTiles!
     @generateGeojsonLayer displayedProperty, colorScale .addTo @map
@@ -36,10 +36,7 @@ class ig.Map
           fillOpacity: 0.7
         onEachFeature: (feature, layer) ~>
           {properties} = feature
-          popup = "<b>#{properties.NAZ_ZSJ}</b>"
-          for property, title of titles
-            popup += "<br>#title: <b>#{ig.utils.formatNumber properties[property] * 100, 1} %</b>"
-          layer.bindPopup popup
+          layer.on \mouseover ~> @onMouseover feature
     @geojsonLayer
 
   init: ->
